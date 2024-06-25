@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Term Deposit Prediction</title>
+  <style>
+    body {
+      background-image: linear-gradient(to top, #36393f, #17a2b8);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Roboto, sans-serif; /* Consider using a web font for better availability */
+      margin: 0;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Set minimum height for full viewport */
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+    }
+
+    h1, h3 {
+      text-align: center;
+      padding: 20px 0;
+      color: #fff; /* Use shorthand for white color */
+    }
+
+    h1 {
+      font-size: 2.5em; /* Increase heading size */
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7); /* Adjust transparency for better readability */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    input[type="text"] {
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      width: 75%;
+    }
+
+    .btn {
+      background-color: #17a2b8;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease-in-out; /* Add smooth hover effect */
+    }
+
+    .btn:hover {
+      background-color: #138dac; /* Change button color on hover */
+    }
+
+    #prediction {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Predict Bank Term Deposit</h1>
+  <h3>Input "1" for "Yes" and "0" for "No" for Categorical Inputs</h3>
+  <form method="post" action="/predict">
+    {% for feature_name in input_features %}
+      <div class="form-group">
+        <label for="{{ feature_name }}">{{ feature_name.replace('.', ' ').capitalize() }}</label>
+        <input type="text" name="{{ feature_name }}" id="{{ feature_name }}" placeholder="Enter {{ feature_name.replace('.', ' ') }}" required>
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn">Predict</button>
+  </form>
+  <br>
+  <p id="prediction">{{ prediction_text }}</p>
+</body>
+</html>
