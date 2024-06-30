@@ -32,7 +32,7 @@
 ### 1. Detailed Presentation of EDA 
 ### 2. Key Findings
 ### 3. Recommendations
-[]
+[https://github.com/bisma-azeem-13/LISUM32_Final_Project/tree/main/Dev-5-EDA-Presentation]
 
 ## Deliverable-6: Model Selection, Building and Evaluation.
 ### 1. Model Selection
